@@ -6,9 +6,9 @@
     <meta name="theme-color" content="#101510" />
     <meta
       name="description"
-      content="A simple live HTTP availability check for radie.app."
+      content="A simple live HTTP availability check for Radium at radie.app."
     />
-    <title>Radie status</title>
+    <title>Radium status</title>
     <style>
       :root {
         color-scheme: dark;
@@ -263,23 +263,23 @@
   </head>
   <body>
     <main>
-      <div class="brand" aria-label="Radie status page">
+      <div class="brand" aria-label="Radium status page">
         <span class="brand-mark" aria-hidden="true">R</span>
-        <span>Radie status</span>
+        <span>Radium status</span>
       </div>
 
       <section class="card" aria-labelledby="page-title">
         <p class="eyebrow">Live service check</p>
-        <h1 id="page-title">Is Radie available?</h1>
+        <h1 id="page-title">Is Radium available?</h1>
         <p class="intro">
-          We check the public website and report what this browser can verify.
+          We check Radium's public website and report what this browser can verify.
         </p>
 
         <div class="status-panel" id="status-panel" data-state="checking" role="status" aria-live="polite">
           <span class="status-indicator" aria-hidden="true"></span>
           <div class="status-copy">
-            <p class="status-label" id="status-label">Checking radie.app…</p>
-            <p class="status-detail" id="status-detail">Making an HTTP request to the site.</p>
+            <p class="status-label" id="status-label">Checking Radium…</p>
+            <p class="status-detail" id="status-detail">Making an HTTP request to radie.app.</p>
           </div>
         </div>
 
@@ -341,7 +341,7 @@
 
           checking = true;
           button.disabled = true;
-          setStatus("checking", "Checking radie.app…", "Making an HTTP request to the site.");
+          setStatus("checking", "Checking Radium…", "Making an HTTP request to radie.app.");
           httpResult.textContent = "Checking…";
 
           const startedAt = performance.now();
@@ -362,17 +362,17 @@
             httpResult.textContent = `${response.status} ${response.statusText}`.trim();
 
             if (response.ok) {
-              setStatus("online", "Website responded", "radie.app returned a successful HTTP response.");
+              setStatus("online", "Radium is responding", "radie.app returned a successful HTTP response.");
             } else {
-              setStatus("offline", "Website returned an error", `radie.app responded with HTTP ${response.status}.`);
+              setStatus("offline", "Radium returned an error", `radie.app responded with HTTP ${response.status}.`);
             }
           } catch (error) {
             responseTime.textContent = "—";
             httpResult.textContent = "Unavailable to browser";
             if (error.name === "AbortError") {
-              setStatus("unknown", "Check timed out", "No readable response arrived within 10 seconds; the site may still be reachable.");
+              setStatus("unknown", "Check timed out", "No readable response arrived within 10 seconds; Radium may still be reachable.");
             } else {
-              setStatus("unknown", "Could not verify availability", "The request failed or the site does not allow browser access to its response (CORS).");
+              setStatus("unknown", "Could not verify Radium", "The request failed or the site does not allow browser access to its response (CORS).");
             }
           } finally {
             window.clearTimeout(timeout);
